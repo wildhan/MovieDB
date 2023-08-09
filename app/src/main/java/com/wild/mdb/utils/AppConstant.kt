@@ -1,0 +1,5 @@
+package com.wild.mdb.utils
+
+object AppConstant {
+    const val API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmEzZTdkYzlmNzM2NjhhNTZlYWNlNTNhYWU5NGVhNCIsInN1YiI6IjY0ZDJmZDk1NjJlODZmMDFkM2MzMjQzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9ynARvNVQkTK2ZTMBRgEt6wrU882QIzrbsoyXYb-Cl8"
+}

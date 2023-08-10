@@ -3,7 +3,7 @@ package com.wild.mdb.di.component
 import android.content.Context
 import com.wild.mdb.MVVMApplication
 import com.wild.mdb.data.api.NetworkService
-import com.wild.mdb.data.repository.GenreRepository
+import com.wild.mdb.data.repository.ServerRepository
 import com.wild.mdb.di.ApplicationContext
 import com.wild.mdb.di.module.ApplicationModule
 import dagger.Component
@@ -19,5 +19,5 @@ interface ApplicationComponent {
 
     fun getNetworkService(): NetworkService
 
-    fun getGenreRepository(): GenreRepository
+    fun getServerRepository(): ServerRepository
 }

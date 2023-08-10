@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.RecyclerListener
 import com.wild.mdb.MVVMApplication
 import com.wild.mdb.data.model.Genre
 import com.wild.mdb.databinding.GenreActivityLayoutBinding
@@ -47,7 +46,6 @@ class GenreActivity: AppCompatActivity()  {
             )
         )
         rvGenres.adapter = adapter
-        rvGenres
     }
 
     private fun setupObserver() {

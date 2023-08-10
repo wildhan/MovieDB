@@ -1,8 +1,8 @@
-package com.wild.mdb.ui.genre
+package com.wild.mdb.ui.discover
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.wild.mdb.data.model.Genre
+import com.wild.mdb.data.model.Movie
 import com.wild.mdb.data.repository.ServerRepository
 import com.wild.mdb.ui.base.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,17 +10,17 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-class GenreViewModel(private val serverRepository: ServerRepository):ViewModel() {
-    private val _uiState = MutableStateFlow<UiState<List<Genre>>>(UiState.Loading)
-    val uiState:StateFlow<UiState<List<Genre>>> = _uiState
+class DiscoverViewModel(private val serverRepository: ServerRepository):ViewModel() {
+    private val _uiState = MutableStateFlow<UiState<List<Movie>>>(UiState.Loading)
+    val uiState: StateFlow<UiState<List<Movie>>> = _uiState
 
     init {
-        fetchGenre()
+        fetchDiscoverMovie()
     }
 
-    private fun fetchGenre(){
+    private fun fetchDiscoverMovie(){
         viewModelScope.launch {
-            serverRepository.getGenres()
+            serverRepository.getDiscoverMovie(1,28)
                 .catch{ e->
                     _uiState.value = UiState.Error(e.toString())
                 }

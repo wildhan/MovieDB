@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wild.mdb.MVVMApplication
+import com.wild.mdb.data.model.Genre
 import com.wild.mdb.data.model.Movie
 import com.wild.mdb.databinding.DiscoverActivityLayoutBinding
 import com.wild.mdb.di.component.DaggerActivityComponent
@@ -35,19 +36,19 @@ class DiscoverActivity: AppCompatActivity() {
     }
 
     private fun setUI() {
-//        val genre = Genre(
-//            id = intent.getIntExtra("id",0),
-//            name = intent.getStringExtra("name").toString()
-//        )
-
         val rvMovies = binding.rvMovies
         rvMovies.layoutManager = LinearLayoutManager(this)
         rvMovies.adapter = adapter
     }
 
     private fun setupObserver() {
+        val genre = Genre(
+            id = intent.getIntExtra("id",0),
+            name = intent.getStringExtra("name").toString()
+        )
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+                discoverViewModel.fetchDiscoverMovie(genre.id)
                 discoverViewModel.uiState.collect {
                     when (it) {
                         is UiState.Success -> {

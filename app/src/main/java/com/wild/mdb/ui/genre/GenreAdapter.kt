@@ -13,11 +13,11 @@ class GenreAdapter(private val genres: ArrayList<Genre>) : RecyclerView.Adapter<
     class GenreVH(private val binding : GenreItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(genre : Genre){
             binding.textNameGenre.text = genre.name
-            binding.root.setOnClickListener {
-                val intent = Intent(binding.root.context, DiscoverActivity::class.java)
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DiscoverActivity::class.java)
                 intent.putExtra("id",genre.id)
                 intent.putExtra("name",genre.name)
-                binding.root.context.startActivity(intent)
+                itemView.context.startActivity(intent)
             }
         }
     }

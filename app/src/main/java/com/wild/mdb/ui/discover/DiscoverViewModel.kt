@@ -14,13 +14,9 @@ class DiscoverViewModel(private val serverRepository: ServerRepository):ViewMode
     private val _uiState = MutableStateFlow<UiState<List<Movie>>>(UiState.Loading)
     val uiState: StateFlow<UiState<List<Movie>>> = _uiState
 
-    init {
-        fetchDiscoverMovie()
-    }
-
-    private fun fetchDiscoverMovie(){
+    fun fetchDiscoverMovie(genreId: Int){
         viewModelScope.launch {
-            serverRepository.getDiscoverMovie(1,28)
+            serverRepository.getDiscoverMovie(1,genreId)
                 .catch{ e->
                     _uiState.value = UiState.Error(e.toString())
                 }

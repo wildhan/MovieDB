@@ -5,6 +5,7 @@ import com.wild.mdb.MVVMApplication
 import com.wild.mdb.data.api.NetworkService
 import com.wild.mdb.di.ApplicationContext
 import com.wild.mdb.di.BaseUrl
+import com.wild.mdb.utils.AppConstant.BASE_URL
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -21,7 +22,7 @@ class ApplicationModule(private val application: MVVMApplication) {
 
     @BaseUrl
     @Provides
-    fun provideBaseUrl(): String = "https://api.themoviedb.org/3/"
+    fun provideBaseUrl(): String = BASE_URL
 
     @Provides
     @Singleton

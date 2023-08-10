@@ -72,4 +72,6 @@ dependencies {
 //    kapt("com.google.dagger:dagger-android-processor:2.42")
     annotationProcessor("com.google.dagger:dagger-compiler:2.42")
     kapt("com.google.dagger:dagger-compiler:2.42")
+
+    implementation("com.github.bumptech.glide:glide:4.11.0")
 }

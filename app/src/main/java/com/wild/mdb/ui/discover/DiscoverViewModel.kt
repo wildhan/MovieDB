@@ -13,15 +13,17 @@ import kotlinx.coroutines.launch
 class DiscoverViewModel(private val serverRepository: ServerRepository):ViewModel() {
     private val _uiState = MutableStateFlow<UiState<List<Movie>>>(UiState.Loading)
     val uiState: StateFlow<UiState<List<Movie>>> = _uiState
+    private var page = 1
 
     fun fetchDiscoverMovie(genreId: Int){
         viewModelScope.launch {
-            serverRepository.getDiscoverMovie(1,genreId)
+            serverRepository.getDiscoverMovie(page,genreId)
                 .catch{ e->
                     _uiState.value = UiState.Error(e.toString())
                 }
                 .collect{
                     _uiState.value = UiState.Success(it)
+                    page++
                 }
         }
     }

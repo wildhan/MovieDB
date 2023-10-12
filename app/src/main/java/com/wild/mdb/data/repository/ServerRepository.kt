@@ -1,6 +1,7 @@
 package com.wild.mdb.data.repository
 
 import com.wild.mdb.data.api.NetworkService
+import com.wild.mdb.data.model.DetailMovie
 import com.wild.mdb.data.model.Genre
 import com.wild.mdb.data.model.Movie
 import kotlinx.coroutines.flow.Flow
@@ -24,6 +25,14 @@ class ServerRepository @Inject constructor(private val networkService: NetworkSe
             emit(networkService.getDiscoverMovie(page,genreId))
         }.map {
             it.result
+        }
+    }
+
+    fun getDetailMovie(id:Int): Flow<DetailMovie> {
+        return flow {
+            emit(networkService.getDetailMovie(id))
+        }.map {
+            it
         }
     }
 }

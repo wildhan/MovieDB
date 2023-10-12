@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.wild.mdb.data.repository.ServerRepository
 import com.wild.mdb.di.ActivityContext
 import com.wild.mdb.ui.base.ViewModelProviderFactory
+import com.wild.mdb.ui.detail.DetailViewModel
 import com.wild.mdb.ui.discover.DiscoverAdapter
 import com.wild.mdb.ui.discover.DiscoverViewModel
 import com.wild.mdb.ui.genre.GenreAdapter
@@ -41,6 +42,10 @@ class ActivityModule(private val activity: AppCompatActivity) {
     @Provides
     fun provideGenreAdapter() = GenreAdapter(ArrayList())
 
-
-
+    @Provides
+    fun provideDetailViewModel(serverRepo: ServerRepository): DetailViewModel{
+        return ViewModelProvider(activity, ViewModelProviderFactory(DetailViewModel::class){
+            DetailViewModel(serverRepo)
+        })[DetailViewModel::class.java]
+    }
 }

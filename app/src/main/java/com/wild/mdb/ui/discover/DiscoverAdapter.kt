@@ -1,11 +1,13 @@
 package com.wild.mdb.ui.discover
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.wild.mdb.data.model.Movie
 import com.wild.mdb.databinding.DiscoverItemLayoutBinding
+import com.wild.mdb.ui.detail.DetailActivity
 import com.wild.mdb.utils.AppConstant.IMG_URL
 
 class DiscoverAdapter(private val movies: ArrayList<Movie>) : RecyclerView.Adapter<DiscoverAdapter.DiscoverVH>() {
@@ -16,6 +18,12 @@ class DiscoverAdapter(private val movies: ArrayList<Movie>) : RecyclerView.Adapt
             Glide.with(binding.ivPoster.context)
                 .load(IMG_URL + movie.posterPath)
                 .into(binding.ivPoster)
+
+            itemView.setOnClickListener{
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra("id",movie.id)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+@file:Suppress("UnstableApiUsage", "OldTargetApi", "SpellCheckingInspection", "GradleDependency")
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -10,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.wild.mdb"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -66,10 +67,6 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     implementation("com.google.dagger:dagger:2.42")
-//    implementation("com.google.dagger:dagger-android:2.42")
-//    implementation("com.google.dagger:dagger-android-support:2.42")
-//    annotationProcessor("com.google.dagger:dagger-android-processor:2.42")
-//    kapt("com.google.dagger:dagger-android-processor:2.42")
     annotationProcessor("com.google.dagger:dagger-compiler:2.42")
     kapt("com.google.dagger:dagger-compiler:2.42")
 
